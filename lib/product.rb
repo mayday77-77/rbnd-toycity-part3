@@ -53,17 +53,10 @@ private
 	# Extra feature to handle the exception and show meaningful message
 	def handle_dup_prod_err(input_title)
 		begin
-<<<<<<< HEAD
 			raise DuplicateProductError
 		rescue Exception => e
 			puts e.message + ": '#{input_title}' already exists"
 		end
-=======
-				raise DuplicateProductError
-			rescue Exception => e
-				puts e.message + ": '#{input_title}' already exists"
-			end
->>>>>>> 52cfeca08babc6c702faa8c99ab18060ec31b85c
 	end
 
 end
