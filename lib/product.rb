@@ -16,13 +16,17 @@ class Product
 		!@stock.zero?
 	end
 
+	def reduce_stock_count
+		@stock -= 1
+	end
+
 	def self.all
 		@@products
 	end
 
 	# loop through product array and return the object if found
 	# Revisit : maybe need to take care if not found?
-	# Revisit : maybe try to refine the search, it seems repeated
+	# Revisit : maybe try to refine the search, it seems repeated. e.g include?
 	def self.find_by_title(input_title)
 		@@products.each do | each_product |
 			if each_product.title == input_title

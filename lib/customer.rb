@@ -1,3 +1,5 @@
+require_relative "transaction"
+
 class Customer
 
 	attr_accessor :name
@@ -7,6 +9,11 @@ class Customer
 	def initialize(options = {})
 		@name = options[:name]
 		add_to_customers
+	end
+
+	# not sure if this is correct in terms of the self argument, but it is working
+	def purchase(product)
+		new_purchase = Transaction.new(self, product)
 	end
 
 	def self.all
