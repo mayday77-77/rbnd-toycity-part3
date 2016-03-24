@@ -24,43 +24,39 @@ class Product
 		@@products
 	end
 
-	# loop through product array and return the object if found
-	# Revisit : maybe need to take care if not found?
-	# Revisit : maybe try to refine the search, it seems repeated. e.g include?
+	# Using enumerable method find to see if title exists
 	def self.find_by_title(input_title)
-		@@products.each do | each_product |
-			if each_product.title == input_title
-				return each_product
-			end
-		end
+		@@products.find {|each_product| each_product.title == input_title}
 	end
 
 	def self.in_stock
 		in_stock_array = @@products.select {| each_product | each_product.in_stock?}
 	end
 
-#private_class_method :all
-
 private
 
 	# Adding to product array depending on the title check
 	def add_to_product
 		if product_title_exists?(@title)
-			begin
-				raise DuplicateProductError
-			rescue Exception => e
-				puts e.message + ": '#{@title}' already exists"
-			end
+			handle_dup_prod_err(@title)
 		else
 			@@products << self
 		end
 	end
 
-	# Method to check if title exists in the products array and return boolean
+	# Method to check if title exists to return boolean
+	# Seems like class method can be invoked from instance and the search coding is the same which I wish to use
 	def product_title_exists?(input_title)
-		@@products.each do | each_product |
-			return true if each_product.title == input_title; end
-		return false					
+		title_exists = self.class.find_by_title(input_title) ? true : false		
+	end
+
+	# Extra feature to handle the exception and show meaningful message
+	def handle_dup_prod_err(input_title)
+		begin
+				raise DuplicateProductError
+			rescue Exception => e
+				puts e.message + ": '#{input_title}' already exists"
+			end
 	end
 
 end

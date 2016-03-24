@@ -1,0 +1,7 @@
+1) How long did you spend working on this project?
+2) What was the most rewarding challenge you conquered?
+3) What two additional features did you build? Why?
+Ans:
+- Added exception handling(rescue) so that code can contine and not stop. Able to print meaningful error message as well
+-
+4) Where do you still have room to grow?
