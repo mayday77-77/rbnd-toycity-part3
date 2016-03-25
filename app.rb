@@ -70,3 +70,22 @@ puts transaction2.product == nanoblock # Should return true
 
 walter.purchase(firehouse)
 # Should return OutOfStockError: 'LEGO Firehouse Headquarter' is out of stock.
+
+# Extra features
+puts "\n***************************************"
+# print current product details in the array
+Product.print_products
+# print current customer details in the array
+Customer.print_customers
+# print current transaction details in the array
+# Add one more purchase
+julia = Customer.find_by_name("Julia Van Cleve")
+julia.purchase(nanoblock)
+Transaction.print_transactions
+
+# A way for customers to return items by purchase ID instead of product as customer might
+# purchase multiple proudcts of the same type
+puts "++++++++++++++++++++++++++++++++++++++++++"
+walter.return_product(2)
+Transaction.print_transactions
+

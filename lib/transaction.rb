@@ -3,6 +3,7 @@ class Transaction
 	attr_accessor :id, :customer, :product
 
 	@@transactions = []
+	@@trans_ID = 0
 
 	def initialize(customer, product)
 		handle_product_stock(customer, product)
@@ -17,11 +18,27 @@ class Transaction
 		@@transactions.find {| each_transaction | each_transaction.id == purchase_id}
 	end
 
+	def self.print_transactions
+		puts "--------Transaction details--------"
+		@@transactions.each do | each_transaction |
+			puts "Purchase ID: #{each_transaction.id}"
+			puts "Customer Name: #{each_transaction.customer.name}"
+			puts "Product Bought: #{each_transaction.product.title}\n\n"
+		end
+	end
+
+	# Extra feature to remove transaction from transaction array and increment stock
+	def self.remove_transaction(input_transaction)
+		input_transaction.product.inc_stock
+		@@transactions.delete(input_transaction)
+	end
+
 private
 	
 	# Add the transaction
 	def add_transaction(customer, product)
-		@id = @@transactions.count + 1
+		@id = @@trans_ID + 1
+		@@trans_ID += 1
 		@customer = customer
 		@product = product
 		@@transactions << self

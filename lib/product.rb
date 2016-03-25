@@ -20,6 +20,11 @@ class Product
 		@stock -= 1
 	end
 
+	# Extra feature to increment stock if customer returns the product
+	def inc_stock
+		@stock += 1
+	end
+
 	def self.all
 		@@products
 	end
@@ -31,6 +36,16 @@ class Product
 
 	def self.in_stock
 		in_stock_array = @@products.select {| each_product | each_product.in_stock?}
+	end
+
+	# Extra feature to print product details in array
+	def self.print_products
+		puts "--------Product Details--------"
+		@@products.each do | each_product |
+			puts "Title: #{each_product.title}"
+			puts "Price: #{each_product.price}"
+			puts "Stock: #{each_product.stock}\n\n"
+		end
 	end
 
 private

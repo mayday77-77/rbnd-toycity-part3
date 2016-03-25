@@ -1,7 +1,29 @@
 1) How long did you spend working on this project?
+Ans:
+A few days. Main purpose is to understand what the project requires and implement them accordingly.
+Also spent time to refactor the codes and adding some additional features.
+
 2) What was the most rewarding challenge you conquered?
+Ans:
+Guess it would be some successful refactoring, shrinking some lines of code and further breaking them into smaller methods.
+
 3) What two additional features did you build? Why?
 Ans:
-- Added exception handling(rescue) so that code can contine and not stop. Able to print meaningful error message as well
--
+- Added exception handling(rescue) for the project
+To learn how to rescue errors so that code can continue to function during runtime and not stop/break. 
+Able to print meaningful error message as well.
+
+- Added printing of products, customers and transactions
+It will be useful to see what exactly are inside the transactions, products and customer arrays.
+If there are more of them, at least we can see what do the array contain at a given time.
+
+- A way for customers to return items
+Probably good to know if you want to retract a transaction/purchase, what are the things to take note of?
+And learnt more coding at the same time.
+
 4) Where do you still have room to grow?
+Ans:
+To probably review and make the code more robust.
+e.g What if the find methods return nil class? what if other exceptions occured?
+Should we stop assigning any object attributes at all during initialization if duplicate errors occur? (can it save memory?)
+

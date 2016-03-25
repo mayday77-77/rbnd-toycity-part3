@@ -16,6 +16,12 @@ class Customer
 		new_purchase = Transaction.new(self, product)
 	end
 
+	# extra feature to return item for customer
+	def return_product(purchase_ID)
+		ret_transaction = Transaction.find(purchase_ID)
+		Transaction.remove_transaction(ret_transaction)
+	end
+
 	def self.all
 		@@customers
 	end
@@ -23,6 +29,14 @@ class Customer
 	# Using enumerable method find to see if name exists
 	def self.find_by_name(input_name)
 		@@customers.find {|each_customer| each_customer.name == input_name}
+	end
+
+	# Extra feature to print customer names in array
+	def self.print_customers
+		puts "--------Customer Details--------"
+		@@customers.each do | each_customer |
+			puts "Name: #{each_customer.name}\n\n"
+		end
 	end
 
 private
